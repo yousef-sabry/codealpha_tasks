@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="calculator">
+        <header class="header">
+            <h1>Calculator <span id="memory-indicator" aria-live="polite" aria-atomic="true" class="memory-indicator" hidden>M</span></h1>
+            <div class="header-actions">
+                <button id="history-toggle" class="btn history-toggle" aria-pressed="false" aria-label="Toggle History" title="Show History">📜</button>
+                <button id="compact-toggle" class="btn compact-toggle" aria-pressed="false" aria-label="Toggle Compact Mode (square layout)" title="Toggle Compact Mode (square layout)">◧</button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Light/Dark Mode">🌙</button>
+            </div>
+        </header>
+        <div class="display-container">
+            <div id="display" class="display">0</div>
+        </div>
+        <div class="buttons">
+            <button class="btn memory" data-value="M+" aria-label="Memory Add (M+)">M+</button>
+            <button class="btn memory" data-value="M-" aria-label="Memory Subtract (M-)">M-</button>
+            <button class="btn memory" data-value="MR" aria-label="Memory Recall (MR)">MR</button>
+            <button class="btn memory" data-value="MC" aria-label="Memory Clear (MC)">MC</button>
+            <button class="btn clear" data-value="AC">AC</button>
+            <button class="btn operator" data-value="/">÷</button>
+            <button class="btn operator" data-value="*">×</button>
+            <button class="btn operator" data-value="-">−</button>
+            <button class="btn number" data-value="7">7</button>
+            <button class="btn number" data-value="8">8</button>
+            <button class="btn number" data-value="9">9</button>
+            <button class="btn operator" data-value="+">+</button>
+            <button class="btn number" data-value="4">4</button>
+            <button class="btn number" data-value="5">5</button>
+            <button class="btn number" data-value="6">6</button>
+            <button class="btn equals" data-value="=">=</button>
+            <button class="btn number" data-value="1">1</button>
+            <button class="btn number" data-value="2">2</button>
+            <button class="btn number" data-value="3">3</button>
+            <button class="btn number zero" data-value="0">0</button>
+            <button class="btn number" data-value=".">.</button>
+        </div>
+        <div class="history-panel" id="history-panel">
+            <div class="history-header">
+                <h2>History</h2>
+                <button id="clear-history" class="btn clear small" aria-label="Clear history">Clear</button>
+            </div>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

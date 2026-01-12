@@ -1,0 +1,362 @@
+/* General Reset and Fonts */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode (Default) */
+body {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #333;
+}
+
+/* Dark Mode */
+body.dark {
+    background: linear-gradient(135deg, #283851, #183556);
+    color: #e0e0e0;
+}
+
+/* Calculator Container */
+.calculator {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+body.dark .calculator {
+    background: #1e1e1e;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #f5f5f5;
+    transition: background 0.3s ease;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* History toggle (mobile only) */
+.history-toggle { display: none; width: 36px; height: 36px; padding: 0; border-radius: 50%; }
+
+@media (max-width: 480px) {
+    .history-toggle { display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .history-panel { z-index: 9999; box-shadow: 0 -6px 24px rgba(0,0,0,0.18); }
+}
+
+/* Compact toggle button: smaller circular icon */
+.compact-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 0.95rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #fff, #f3f3f3);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.compact-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
+body.dark .compact-toggle { background: linear-gradient(180deg,#2b2b2b,#262626); border: 1px solid rgba(255,255,255,0.06); color: #e0e0e0; }
+
+body.dark .header {
+    background: #2c2c2c;
+}
+
+/* Compact Mode styles: wider-than-tall (square-like) */
+.calculator.compact {
+    max-width: 920px;
+    aspect-ratio: 2.6 / 1; /* width / height > 1 to make it wider than tall */
+    overflow: hidden;
+}
+
+/* For small screens, don't force aspect ratio */
+@media (max-width: 520px) {
+    .calculator.compact {
+        aspect-ratio: auto;
+        max-width: 100%;
+    }
+}
+
+.calculator.compact .display-container {
+    padding: 12px;
+}
+
+.calculator.compact .display {
+    font-size: 1.6rem;
+    min-height: 44px;
+}
+
+.calculator.compact .buttons {
+    gap: 6px;
+    padding: 12px;
+}
+
+.calculator.compact .btn {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+}
+
+@media (min-width: 800px) {
+    /* On wide screens prefer compact appearance (optional) */
+    .calculator.compact {
+        max-width: 1100px;
+        aspect-ratio: 2.0 / 1;
+    }
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Display */
+.display-container {
+    padding: 20px;
+    background: #fafafa;
+    transition: background 0.3s ease;
+}
+
+body.dark .display-container {
+    background: #333;
+}
+
+.display {
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: right;
+    min-height: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(10px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Buttons */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+
+.btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Highlight state for keyboard presses */
+.btn.active {
+    transform: scale(0.95);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+    opacity: 0.95;
+}
+
+.btn.number {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.btn.memory {
+    background: #7e57c2;
+    color: #fff;
+}
+
+body.dark .btn.memory {
+    background: #6a1b9a;
+    color: #fff;
+}
+
+body.dark .btn.number {
+    background: #424242;
+    color: #e0e0e0;
+}
+
+/* Memory indicator in header */
+.memory-indicator {
+    font-weight: 700;
+    color: #ff5722;
+    margin-left: 8px;
+    font-size: 0.9rem;
+}
+
+.btn.operator {
+    background: #2196f3;
+    color: #fff;
+}
+
+.btn.clear {
+    background: #ff5722;
+    color: #fff;
+}
+
+.btn.equals {
+    background: #4caf50;
+    color: #fff;
+    grid-column: span 2;
+}
+
+.btn.zero {
+    grid-column: span 2;
+}
+
+/* History Panel */
+.history-panel {
+    padding: 20px;
+    background: #f5f5f5;
+    border-top: 1px solid #ddd;
+    transition: all 0.3s ease;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn.small {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+body.dark .history-panel {
+    background: #2c2c2c;
+    border-top: 1px solid #555;
+}
+
+.history-panel h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#history-list {
+    list-style: none;
+}
+
+#history-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+body.dark #history-list li {
+    border-bottom: 1px solid #555;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    /* Fluid, touch-friendly layout for phones */
+    .calculator {
+        max-width: 95vw;
+        margin: 12px;
+        border-radius: 14px;
+    }
+
+    .header {
+        padding: 12px;
+    }
+
+    .header h1 { font-size: 1.1rem; }
+
+    .buttons {
+        grid-template-columns: repeat(4, minmax(60px, 1fr));
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .btn {
+        padding: 16px;
+        font-size: 1.1rem;
+        min-height: 56px;
+    }
+
+    /* Make zero button occupy two columns but keep touch size reasonable */
+    .btn.zero { grid-column: span 2; }
+
+    .display {
+        font-size: 1.8rem;
+        min-height: 64px;
+        padding-right: 12px;
+    }
+
+    /* History behaves as overlay at bottom with enough height */
+    .history-panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-height: 260px;
+        transform: translateY(100%);
+        transition: transform 0.25s ease;
+        padding: 14px;
+    }
+    .history-panel.open {
+        transform: translateY(0);
+    }
+
+    /* Ensure compact mode doesn't force aspect ratio on small screens */
+    .calculator.compact { aspect-ratio: auto; max-width: 95vw; min-height: auto; }
+}
