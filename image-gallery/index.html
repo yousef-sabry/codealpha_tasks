@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature-Inspired Image Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
+    <header>
+        <h1><i class="fas fa-leaf"></i> Nature-Inspired Image Gallery</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by caption...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i> All</button>
+            <button class="filter-btn" data-filter="nature"><i class="fas fa-tree"></i> Nature</button>
+            <button class="filter-btn" data-filter="urban"><i class="fas fa-city"></i> Urban</button>
+            <button class="filter-btn" data-filter="animals"><i class="fas fa-paw"></i> Animals</button>
+            <button class="shuffle-btn"><i class="fas fa-random"></i> Shuffle</button>
+        </div>
+    </header>
+    <main>
+        <div class="gallery" id="gallery"></div>
+    </main>
+    <div class="lightbox" id="lightbox">
+        <span class="close-btn" id="closeLightbox">&times;</span>
+        <button class="nav-btn prev-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="" loading="lazy">
+            <div class="caption" id="lightboxCaption"></div>
+            <div class="lightbox-controls">
+                <button id="zoomBtn"><i class="fas fa-search-plus"></i> Zoom</button>
+                <button id="downloadBtn"><i class="fas fa-download"></i> Download</button>
+            </div>
+        </div>
+        <button class="nav-btn next-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
